@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Daufenbach — Engenheiro de Software Front-End</title>
+<meta name="description" content="Currículo de Lucas Daufenbach, Engenheiro de Software Front-End especializado em JavaScript, Ext.js, IA generativa aplicada a desenvolvimento e interfaces 3D no browser.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+  :root {
+    --bg: #F9F7F4;
+    --ink: #1A1814;
+    --muted: #6B6560;
+    --accent: #D4500A;
+    --accent-light: #F4EBE4;
+    --rule: #D9D4CE;
+    --col-width: 720px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html, body {
+      width: 210mm;
+      height: 297mm;
+    }
+
+    body {
+      background: var(--bg) !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .page {
+      box-shadow: none;
+      margin: 0;
+      padding: 20px 36px 20px 36px;
+      width: 210mm;
+      min-height: unset;
+      font-size: 7.8pt;
+      line-height: 1.4;
+    }
+
+    .name { font-size: 22pt; }
+    .title { font-size: 6.5pt; }
+
+    .contacts a,
+    .contacts span { font-size: 7pt; }
+
+    header { padding-bottom: 14px; }
+
+    .body { margin-top: 16px; gap: 0 28px; grid-template-columns: 150px 1fr; }
+
+    .label { font-size: 6.5pt; }
+
+    .row + .row > * { padding-top: 12px; margin-top: 12px; }
+
+    .summary { font-size: 7.8pt; line-height: 1.45; }
+
+    .exp-item { margin-bottom: 10px; }
+    .exp-role { font-size: 8pt; }
+    .exp-period { font-size: 7pt; }
+    .exp-company { font-size: 7.5pt; margin-bottom: 2px; }
+    .exp-desc { font-size: 7.5pt; line-height: 1.4; }
+    .exp-desc ul { padding-left: 12px; }
+    .exp-desc li { margin-bottom: 1px; }
+
+    .tag { font-size: 7pt; padding: 2px 7px; }
+
+    .edu-item { margin-bottom: 8px; }
+    .edu-degree { font-size: 8pt; }
+    .edu-school { font-size: 7.5pt; }
+    .edu-period { font-size: 7pt; }
+
+    footer {
+      margin-top: 12px;
+      padding-top: 8px;
+      font-size: 7pt;
+    }
+  }
+
+  body {
+    background: #EDEAE5;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    font-size: 10.5pt;
+    line-height: 1.6;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 794px;
+    margin: 40px auto;
+    background: var(--bg);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    padding: 56px 64px 56px 64px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36pt;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .title {
+    font-family: 'DM Mono', monospace;
+    font-size: 8pt;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
+  .contacts a,
+  .contacts span {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .contacts a:hover { color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .body {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0 48px;
+    margin-top: 32px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+
+  /* ── ROW ── */
+  .row {
+    display: contents;
+  }
+
+  .row + .row > * {
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+
+  .col-label {
+    /* left column */
+  }
+
+  .col-content {
+    /* right column */
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    font-size: 10.5pt;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .summary strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-item {
+    margin-bottom: 20px;
+  }
+
+  .exp-item:last-child { margin-bottom: 0; }
+
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .exp-role {
+    font-weight: 600;
+    font-size: 10.5pt;
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 8pt;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-company {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .exp-desc {
+    font-size: 10pt;
+    color: #3A3630;
+    line-height: 1.65;
+  }
+
+  .exp-desc ul {
+    padding-left: 16px;
+    margin-top: 4px;
+  }
+
+  .exp-desc li {
+    margin-bottom: 2px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5pt;
+    padding: 3px 10px;
+    border-radius: 2px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .tag.neutral {
+    background: #EDEAE5;
+    color: var(--muted);
+  }
+
+  /* ── EDUCATION ── */
+  .edu-item {
+    margin-bottom: 14px;
+  }
+
+  .edu-item:last-child { margin-bottom: 0; }
+
+  .edu-degree {
+    font-weight: 600;
+    font-size: 10.5pt;
+  }
+
+  .edu-school {
+    font-size: 9.5pt;
+    color: var(--muted);
+  }
+
+  .edu-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 8pt;
+    color: var(--muted);
+  }
+
+  /* ── SOFT SKILLS ── */
+  .soft-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-family: 'DM Mono', monospace;
+    font-size: 8pt;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .page {
+      margin: 0;
+      padding: 28px 20px 36px 20px;
+      box-shadow: none;
+    }
+
+    header {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding-bottom: 20px;
+    }
+
+    .name { font-size: 26pt; }
+
+    .contacts {
+      align-items: flex-start;
+    }
+
+    .body {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 24px;
+    }
+
+    /* turn display:contents rows into normal blocks */
+    .row {
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .row + .row {
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* remove the per-child border that was for the grid layout */
+    .row + .row > * {
+      padding-top: 0;
+      border-top: none;
+      margin-top: 0;
+    }
+
+    .col-label {
+      margin-bottom: 10px;
+    }
+
+    .exp-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+    }
+
+    .exp-period {
+      white-space: normal;
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 4px;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div>
+      <div class="name">Lucas <em>Daufenbach</em></div>
+      <div class="title">Engenheiro de Software Front-End</div>
+    </div>
+    <div class="contacts">
+      <a href="mailto:lucasd.software@gmail.com">lucasd.software@gmail.com</a>
+      <a href="https://github.com/lucasdaufenbach" target="_blank">github.com/lucasdaufenbach</a>
+      <span>Criciúma, SC</span>
+    </div>
+  </header>
+
+  <!-- BODY GRID -->
+  <div class="body">
+
+    <!-- SOBRE -->
+    <div class="row">
+      <div class="col-label"><span class="label">Sobre</span></div>
+      <div class="col-content">
+        <p class="summary">
+          Desenvolvedor Front-End com experiência em <strong>JavaScript, Ext.js e arquitetura MVC</strong>, 
+          atuando em ERP corporativo. Formado em Engenharia de Software pela UNISATC, 
+          com certificações em <strong>Requisitos de Software (400h)</strong> e <strong>Analista de Inovação (320h)</strong>. 
+          Aplico ativamente <strong>IA generativa no ciclo de desenvolvimento</strong> — tanto no trabalho quanto em projetos pessoais — 
+          com foco em engenharia de prompts, gerenciamento de contexto e otimização de uso de tokens para maximizar produtividade e qualidade do código. 
+          Tenho interesse em <strong>interfaces 3D no browser</strong> com Three.js e React Three Fiber, explorado em projetos pessoais.
+          Experiência com <strong>comunicação técnica e fala em público</strong> — habilidade desenvolvida no período como professor, 
+          onde aprendi a estruturar raciocínio com clareza, adaptar linguagem ao interlocutor e conduzir explicações de forma objetiva e didática.
+          Familiarizado com <strong>metodologia Scrum</strong> e boas práticas de desenvolvimento em equipe.
+        </p>
+      </div>
+    </div>
+
+    <!-- EXPERIÊNCIA -->
+    <div class="row">
+      <div class="col-label"><span class="label">Experiência</span></div>
+      <div class="col-content">
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Desenvolvedor Front-End</span>
+            <span class="exp-period">Jun 2024 — Atual</span>
+          </div>
+          <div class="exp-company">Useall Software — Criciúma, SC</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Desenvolvimento e manutenção de módulos do ERP utilizando <strong>JavaScript</strong> e <strong>Ext.js</strong> com padrão <strong>MVC</strong>.</li>
+              <li>Implementação de melhorias de performance e usabilidade em interfaces corporativas de alta complexidade.</li>
+              <li>Colaboração em ciclos ágeis (Scrum), participando de code review e cerimônias de sprint.</li>
+              <li>Uso de <strong>IA generativa (LLMs)</strong> para acelerar desenvolvimento: engenharia de prompts, gestão de janela de contexto e controle de consumo de tokens aplicados ao fluxo diário de código.</li>
+              <li>Versionamento e controle de branches com <strong>GitHub</strong>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Professor — Web Design</span>
+            <span class="exp-period">Ago 2023 — Jun 2024</span>
+          </div>
+          <div class="exp-company">Técnico SATC — Criciúma, SC</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Ministração de aulas práticas de UI/UX e desenvolvimento web com foco em experiência do usuário e acessibilidade.</li>
+              <li>Elaboração de materiais didáticos alinhados às boas práticas de mercado.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Estagiário — Desenvolvimento</span>
+            <span class="exp-period">Mar 2023 — Out 2023</span>
+          </div>
+          <div class="exp-company">Núcleo — Centro Tecnológico SATC, Criciúma, SC</div>
+          <div class="exp-desc">
+            <ul>
+              <li>Desenvolvimento de protótipo IoT e integração de robôs em linha de produção industrial.</li>
+              <li>Aplicação de JavaScript para comunicação entre dispositivos e interface de controle.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PROJETOS PESSOAIS -->
+    <div class="row">
+      <div class="col-label"><span class="label">Projetos</span></div>
+      <div class="col-content">
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Studios Daufen — Sistema de Gestão de Pedidos · TCC</span>
+            <span class="exp-period"><a href="https://studiosdaufen.com.br/" target="_blank" style="font-family:'DM Mono',monospace;font-size:8pt;color:var(--accent);text-decoration:none;">studiosdaufen.com.br</a></span>
+          </div>
+          <div class="exp-desc">
+            Plataforma full-stack para gestão de pedidos de uniformes personalizados — da solicitação ao pagamento. Envolve front-end, back-end, banco de dados relacional, deploy na <strong>Railway</strong> e integração com <strong>gateway de pagamento</strong>. Permite que grupos façam pedidos coletivos, acompanhem o status em tempo real e concluam o pagamento online. Fluxo de desenvolvimento com apoio de IA generativa: arquivos de contexto de projeto, prompt engineering por feature e controle de tokens entre sessões.
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Mockup 3D Viewer — Ferramenta de Personalização · TCC</span>
+            <span class="exp-period"><a href="https://lucasdaufenbach.github.io/mockup3d/" target="_blank" style="font-family:'DM Mono',monospace;font-size:8pt;color:var(--accent);text-decoration:none;">lucasdaufenbach.github.io/mockup3d</a></span>
+          </div>
+          <div class="exp-desc">
+            Ferramenta complementar ao Studios Daufen: permite ao usuário visualizar e personalizar uniformes em <strong>3D no browser</strong> antes de fazer o pedido — aplicando estampas, cores e variações diretamente sobre o modelo. Desenvolvida com <strong>Three.js, React Three Fiber e @react-three/drei</strong>. Uso de IA para geração e refinamento de código de renderização, com engenharia de prompts focada em WebGL e gerenciamento de contexto entre sessões.
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <span class="exp-role">Sistema de Agendamentos — Oftalmologia</span>
+            <span class="exp-period" style="font-family:'DM Mono',monospace;font-size:8pt;color:var(--muted);">Em desenvolvimento</span>
+          </div>
+          <div class="exp-desc">
+            Sistema web de agendamentos para clínica oftalmológica — gestão de consultas, pacientes e agenda médica. Arquitetura desenvolvida com apoio de IA, incluindo definição de contexto de projeto via arquivos de especificação (<em>CLAUDE.md / project context</em>) para manter consistência entre sessões de desenvolvimento e reduzir retrabalho.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- HARD SKILLS -->
+    <div class="row">
+      <div class="col-label"><span class="label">Hard Skills</span></div>
+      <div class="col-content">
+        <div class="skills-grid">
+          <span class="tag">JavaScript</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">HTML5</span>
+          <span class="tag">CSS3</span>
+          <span class="tag">Ext.js</span>
+          <span class="tag">Arquitetura MVC</span>
+          <span class="tag">SOLID</span>
+          <span class="tag">Design Patterns</span>
+          <span class="tag">Scrum / Ágil</span>
+          <span class="tag">GitHub / Git</span>
+          <span class="tag">SQL</span>
+          <span class="tag">REST APIs</span>
+          <span class="tag">Prompt Engineering</span>
+          <span class="tag">AI-assisted Development</span>
+          <span class="tag">Gestão de Contexto (LLMs)</span>
+          <span class="tag neutral">Angular (em aprendizado)</span>
+          <span class="tag neutral">AWS (em aprendizado)</span>
+          <span class="tag neutral">Three.js</span>
+          <span class="tag neutral">React Three Fiber</span>
+          <span class="tag neutral">@react-three/drei</span>
+          <span class="tag neutral">WebGL</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMAÇÃO -->
+    <div class="row">
+      <div class="col-label"><span class="label">Formação</span></div>
+      <div class="col-content">
+
+        <div class="edu-item">
+          <div class="edu-degree">Engenharia de Software</div>
+          <div class="edu-school">UNISATC — Centro Universitário</div>
+          <div class="edu-period">2022 — 2026</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Especialista em Requisitos de Software · 400h</div>
+          <div class="edu-school">Centro Tecnológico SATC — Educação Corporativa</div>
+          <div class="edu-period">Ago 2022 — Dez 2022 · Certificado em Out 2024</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">Analista de Inovação · 320h</div>
+          <div class="edu-school">Centro Tecnológico SATC — Educação Corporativa</div>
+          <div class="edu-period">Out 2021 — Set 2022 · Certificado em Out 2022</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SOFT SKILLS -->
+    <div class="row">
+      <div class="col-label"><span class="label">Soft Skills</span></div>
+      <div class="col-content">
+        <div class="soft-list">
+          <span class="tag neutral">Proatividade</span>
+          <span class="tag neutral">Comunicação</span>
+          <span class="tag neutral">Inteligência emocional</span>
+          <span class="tag neutral">Colaboração</span>
+          <span class="tag neutral">Organização</span>
+          <span class="tag neutral">Empatia</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body grid -->
+
+  <footer>
+    <span>Lucas Daufenbach de Oliveira</span>
+    <span>github.com/lucasdaufenbach</span>
+  </footer>
+
+</div>
+</body>
+</html>
