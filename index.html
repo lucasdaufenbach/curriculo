@@ -55,6 +55,7 @@
     .contacts span { font-size: 7pt; }
 
     header { padding-bottom: 14px; }
+    .avatar { width: 54px; height: 54px; }
 
     .body { margin-top: 16px; gap: 0 28px; grid-template-columns: 150px 1fr; }
 
@@ -107,11 +108,21 @@
   /* ── HEADER ── */
   header {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto 1fr auto;
     align-items: end;
     gap: 24px;
     padding-bottom: 28px;
     border-bottom: 2px solid var(--ink);
+  }
+
+  .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--ink);
+    grid-row: 1 / 3;
+    align-self: center;
   }
 
   .name {
@@ -328,15 +339,22 @@
     }
 
     header {
-      grid-template-columns: 1fr;
+      grid-template-columns: auto 1fr;
       gap: 14px;
       padding-bottom: 20px;
     }
 
-    .name { font-size: 26pt; }
+    .avatar {
+      width: 88px;
+      height: 88px;
+    }
+
+    .name { font-size: 22pt; }
 
     .contacts {
+      grid-column: 1 / 3;
       align-items: flex-start;
+      margin-top: 8px;
     }
 
     .body {
@@ -389,6 +407,7 @@
 
   <!-- HEADER -->
   <header>
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/141446643?s=400&u=d4c5cb577ea2ffcfea79ce45c8dd2ecdd322c992&v=4" alt="Foto de Lucas Daufenbach">
     <div>
       <div class="name">Lucas <em>Daufenbach</em></div>
       <div class="title">Engenheiro de Software Front-End</div>
